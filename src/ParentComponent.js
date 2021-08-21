@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import SimpleComp from "./SimpleComponent";
 import PureComp from "./PureComponent";
+import FunctionComp from "./FunctionComp";
+import BtnChangeToLazyMan from "./BtnChangeToLazyMan";
+
 export class ParentComponent extends Component {
   constructor(props) {
     super(props);
@@ -27,11 +30,18 @@ export class ParentComponent extends Component {
   };
   render() {
     console.log("%c RENDER() OF <PARENTCOMPONENT/>", "color:red");
+
     return (
       <div>
+        <p>
+          <span className="red">ParentComponent: </span>
+          {this.state.name}
+        </p>
+
         <SimpleComp name={this.state.name} />
         <PureComp name={this.state.name} />
-        <button onClick={this.changeToLazyMan}>Change to LazyMan</button>
+        <FunctionComp name={this.state.name} />
+        <BtnChangeToLazyMan changeToLazyMan={this.changeToLazyMan} />
       </div>
     );
   }
